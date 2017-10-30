@@ -81,7 +81,7 @@ class Handler(object):
         if self.event.get('occurrences') > occurrences and \
             self.event.get('action') == 'create':
             number = int(float(refresh) / float(interval))
-            if self.event.get('occurrences') % number != 0:
+            if number != 0 and (self.event.get('occurrences') - occurrences) % number != 0:
                 self.bail('only handling every {0} occurrences'.format(
                     number))
                 return True
